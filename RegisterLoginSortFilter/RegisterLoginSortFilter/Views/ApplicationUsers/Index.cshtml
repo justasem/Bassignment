@@ -7,21 +7,6 @@
 
 <h2>@ViewBag.Title</h2>
 
-@using (Html.BeginForm("Index", "ApplicationUsers", FormMethod.Get))
-{
-    <div class="input-group">
-        @Html.TextBox("SearchEmailString", ViewBag.CurrentFilter as string,
-                                    new { @class = "form-control", placeholder = "Filter by Email" })
-    </div>
-    <div class="input-group">
-        @Html.TextBox("SearchNameString", ViewBag.CurrentFilter as string,
-                                new { @class = "form-control", placeholder = "Filter by Name" })
-        <span class="input-group-btn" style="width:0;">
-            <button class="btn btn-primary" type="submit">Filter</button>
-        </span>
-    </div>
-    
-}
         <table class="table">
             <tr>
                 <th>
@@ -59,8 +44,23 @@
 
         </table>
 
-        <br />
-        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@using (Html.BeginForm("Index", "ApplicationUsers", FormMethod.Get))
+{
 
-        @Html.PagedListPager(Model, page => Url.Action("Index",
-    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    @Html.TextBox("SearchEmailString", ViewBag.CurrentFilter as string,
+                                    new { @class = "form-control", placeholder = "Filter by Email" })
+
+
+    @Html.TextBox("SearchNameString", ViewBag.CurrentFilter as string,
+                                new { @class = "form-control", placeholder = "Filter by Name" })
+
+    <button class="btn btn-primary" type="submit">Filter</button>
+
+}
+
+
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

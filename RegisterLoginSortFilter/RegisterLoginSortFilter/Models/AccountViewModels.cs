@@ -88,10 +88,10 @@ namespace RegisterLoginSortFilter.Models
         [Required]
         [Display(Name = "Date Of Birth")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/mm/dd}", ApplyFormatInEditMode = true)]
         public DateTime BirthDate { get; set; }
 
-        [Display(Name = "Additional info")]
+        [Display(Name = "Additional info (optional)")]
         [MaxLength(300, ErrorMessage = "Only up to 300 characters allowed.")]
         public string AdditionalInfo { get; set; }
     }
