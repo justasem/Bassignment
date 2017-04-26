@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace RegisterLoginSortFilter.Models
@@ -70,6 +71,10 @@ namespace RegisterLoginSortFilter.Models
         public string Email { get; set; }
 
         [Required]
+        [StringLength(100)]
+        public string Name { get; set; }
+
+        [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
@@ -79,6 +84,16 @@ namespace RegisterLoginSortFilter.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Date Of Birth")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime BirthDate { get; set; }
+
+        [Display(Name = "Additional info")]
+        [MaxLength(300, ErrorMessage = "Only up to 300 characters allowed.")]
+        public string AdditionalInfo { get; set; }
     }
 
     public class ResetPasswordViewModel
