@@ -1,7 +1,12 @@
 ﻿@{
-    ViewBag.Title = "All Users";
+    ViewBag.Title = "Welcome to my assignment page!";
 }
 <br />
+
+<h4>@ViewBag.Title</h4>
+
+<br />
+
 
 @if (TempData["Message"] != null)
 {
@@ -9,8 +14,8 @@
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        @TempData["Message"]
+        <strong>@TempData["Message"]</strong>
     </div>
 }
 
-<h3>@Html.ActionLink("All Users", "Index", "ApplicationUsers")</h3>
+<h3>@Html.ActionLink("View all registered users", "Index", "ApplicationUsers")</h3>
