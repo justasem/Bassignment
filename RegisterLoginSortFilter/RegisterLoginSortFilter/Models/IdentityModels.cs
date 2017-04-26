@@ -39,5 +39,6 @@ namespace RegisterLoginSortFilter.Models
         {
             return new ApplicationDbContext();
         }
+                
     }
 }
